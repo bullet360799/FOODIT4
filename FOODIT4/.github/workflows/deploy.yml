@@ -27,10 +27,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Create .nojekyll file
+        run: touch ./dist/.nojekyll
+
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./dist
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v1
